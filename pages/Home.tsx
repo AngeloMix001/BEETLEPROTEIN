@@ -1,10 +1,19 @@
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { PRODUCTS, REVIEWS, FAQS } from '../constants';
 
 const Home: React.FC = () => {
   const [selectedFlavor, setSelectedFlavor] = useState<string | 'All'>('All');
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const flavors = useMemo(() => {
     const unique = Array.from(new Set(PRODUCTS.map(p => p.flavorProfile)));
@@ -19,6 +28,24 @@ const Home: React.FC = () => {
 
   return (
     <div className="flex flex-col">
+      <style>{`
+        @keyframes revealUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-reveal-1 {
+          animation: revealUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+        .animate-reveal-2 {
+          opacity: 0;
+          animation: revealUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s forwards;
+        }
+        .animate-reveal-3 {
+          opacity: 0;
+          animation: revealUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s forwards;
+        }
+      `}</style>
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
         <div className="absolute inset-0 hero-glow"></div>
@@ -26,14 +53,15 @@ const Home: React.FC = () => {
           <div className="flex flex-col gap-8 text-center md:text-left">
             <div className="flex flex-col gap-4">
               <h1 className="text-primary text-5xl md:text-8xl font-black leading-[1] tracking-tighter italic uppercase">
-                Nutrición<br />Sin Límites.
+                <span className="block animate-reveal-1">Nutrición</span>
+                <span className="block animate-reveal-2">Sin Límites.</span>
               </h1>
-              <p className="text-gray-400 text-lg md:text-xl font-light max-w-md mx-auto md:mx-0 leading-relaxed italic">
+              <p className="text-gray-400 text-lg md:text-xl font-light max-w-md mx-auto md:mx-0 leading-relaxed italic animate-reveal-3">
                 Biodisponibilidad máxima. Sostenibilidad radical. Rendimiento absoluto.
               </p>
             </div>
-            <div className="flex flex-wrap justify-center md:justify-start items-center gap-6">
-              <button className="gold-gradient text-background-dark px-10 py-4 rounded-lg text-sm font-black tracking-widest uppercase hover:brightness-110 transition-all">
+            <div className="flex flex-wrap justify-center md:justify-start items-center gap-6 animate-reveal-3">
+              <button className="gold-gradient text-background-dark px-10 py-4 rounded-lg text-sm font-black tracking-widest uppercase hover:brightness-110 transition-all transform hover:scale-105">
                 Explorar Colección
               </button>
               <Link to="/sabores" className="border border-primary/30 text-white px-10 py-4 rounded-lg text-sm font-black tracking-widest uppercase hover:bg-primary/10 transition-all">
@@ -42,8 +70,14 @@ const Home: React.FC = () => {
             </div>
           </div>
           <div className="relative hidden md:block">
-            <div className="w-full aspect-square bg-center bg-no-repeat bg-contain transition-all hover:rotate-2 duration-700" 
-                 style={{ backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuBWSgjeTHp9_unAbeyd6sER0WS3v9UgTiVmzFVgHfxGgX3tZFm3_1_PwqHpfpUCyEkDag4Y4O9BR2RNgV9fvb_gSzjwkoGo3k32JtMb2yyZxhasScUvW_2nNaX3DKGM6-G0ZaF5jyw11kibwOLifWfYAl3VEWnZFl_8gKhDFfr-7B25Jiv8Ip4t1iX2jhKOMkVpQ-dHpu7qppDuwNcozE_sBY4ASiPfF01UUzzVwQGi75RqMEGw1sAQ6B-90iBzRdI8xwcDF4LXmQ')` }}>
+            {/* Parallax & Zoom effect on scroll */}
+            <div 
+              className="w-full aspect-square bg-center bg-no-repeat bg-contain transition-transform duration-200 ease-out" 
+              style={{ 
+                backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuBWSgjeTHp9_unAbeyd6sER0WS3v9UgTiVmzFVgHfxGgX3tZFm3_1_PwqHpfpUCyEkDag4Y4O9BR2RNgV9fvb_gSzjwkoGo3k32JtMb2yyZxhasScUvW_2nNaX3DKGM6-G0ZaF5jyw11kibwOLifWfYAl3VEWnZFl_8gKhDFfr-7B25Jiv8Ip4t1iX2jhKOMkVpQ-dHpu7qppDuwNcozE_sBY4ASiPfF01UUzzVwQGi75RqMEGw1sAQ6B-90iBzRdI8xwcDF4LXmQ')`,
+                transform: `translateY(${scrollY * -0.1}px) scale(${1 + scrollY * 0.0003}) rotate(${scrollY * 0.02}deg)`
+              }}
+            >
             </div>
           </div>
         </div>
