@@ -113,143 +113,204 @@ const Impacto: React.FC = () => {
         </div>
       </section>
 
-      {/* RE-IMAGINED CIRCULAR ENGINEERING SECTION */}
+      {/* IMPROVED CIRCULAR ENGINEERING SECTION */}
       <section className="py-24 md:py-40 bg-background-dark relative overflow-hidden">
-        {/* Decorative Grid Background */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'linear-gradient(rgba(198,166,93,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(198,166,93,0.3) 1px, transparent 1px)', backgroundSize: '60px 60px' }}></div>
+        {/* Technical Grid Overlay */}
+        <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'linear-gradient(#c6a65d 1px, transparent 1px), linear-gradient(90deg, #c6a65d 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
         
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 md:mb-32">
-            <div className="max-w-2xl">
-              <span className="text-primary font-black tracking-[0.4em] uppercase text-[10px] md:text-xs mb-4 block italic">Protocolo de Regeneración</span>
-              <h2 className="text-4xl md:text-7xl font-black italic uppercase tracking-tighter text-white leading-none">Ingeniería <span className="text-primary">Circular</span>.</h2>
-            </div>
-            <div className="flex items-center gap-4 md:gap-6">
-              <div className="size-14 md:size-20 rounded-full border border-primary/20 flex items-center justify-center animate-pulse shrink-0">
-                <span className="material-symbols-outlined text-primary text-2xl md:text-3xl">sync_alt</span>
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 mb-24 md:mb-32">
+            <div className="max-w-3xl">
+              <div className="inline-flex items-center gap-3 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-8">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+                <span className="text-primary font-black uppercase text-[10px] tracking-widest italic">Live Systems Optimization</span>
               </div>
-              <p className="text-gray-500 text-xs md:text-sm font-light italic max-w-[200px] leading-snug">
-                Un sistema donde el residuo no existe, solo los recursos en tránsito.
+              <h2 className="text-5xl md:text-8xl font-black italic uppercase tracking-tighter text-white leading-[0.85] mb-8">
+                Ingeniería <br /> <span className="text-primary">Circular.</span>
+              </h2>
+              <p className="text-gray-500 text-lg md:text-xl font-light italic leading-relaxed max-w-xl">
+                Nuestro proceso no tiene fin. Diseñamos sistemas regenerativos donde cada salida es el combustible de la siguiente etapa.
               </p>
+            </div>
+            
+            {/* Cycle Pulse Visualization */}
+            <div className="hidden lg:block shrink-0">
+               <div className="relative size-48 rounded-full border border-primary/10 flex items-center justify-center">
+                  <div className="absolute inset-0 rounded-full border-t-2 border-primary/40 animate-spin" style={{ animationDuration: '4s' }}></div>
+                  <div className="absolute inset-4 rounded-full border-b-2 border-primary/20 animate-spin-slow" style={{ animationDuration: '8s' }}></div>
+                  <span className="material-symbols-outlined text-primary text-5xl">settings_input_component</span>
+               </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-px bg-transparent md:bg-primary/10 border-0 md:border md:border-primary/10 overflow-hidden md:rounded-3xl">
+          {/* Interactive Engineering Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 relative">
+            {/* Connection Line (Desktop Only) */}
+            <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent hidden xl:block -translate-y-12"></div>
+            
             {[
               { 
-                step: '01',
+                step: 'MOD-01',
                 title: 'Bio-Recolección',
-                desc: 'Capturamos subproductos orgánicos de la agricultura local, transformando lo que otros desechan en nuestro combustible primario.',
-                icon: 'auto_awesome_motion',
-                tag: 'Input'
+                desc: 'Capturamos biomasa orgánica local de grado A, eliminando el desperdicio agrícola del sistema.',
+                icon: 'view_in_ar',
+                tag: 'Input Stage',
+                stats: ['Biomass: 98.4%', 'Humidity: 12%']
               },
               { 
-                step: '02',
+                step: 'MOD-02',
                 title: 'Bio-Conversión',
-                desc: 'Nuestros laboratorios de crianza vertical optimizan la biomasa con un consumo hídrico prácticamente inexistente.',
-                icon: 'model_training',
-                tag: 'Process'
+                desc: 'Optimización entomológica en ambientes verticales controlados por IA para eficiencia térmica.',
+                icon: 'hub',
+                tag: 'Transformation',
+                stats: ['Yield: 94.1%', 'CO2: -14%']
               },
               { 
-                step: '03',
-                title: 'Extracción Elite',
-                desc: 'Mediante procesos de mezcla en frío, aislamos la proteína y los omegas manteniendo su integridad molecular intacta.',
-                icon: 'science',
-                tag: 'Output'
+                step: 'MOD-03',
+                title: 'Aislamiento',
+                desc: 'Extracción molecular en frío que preserva el 100% de la biodisponibilidad proteica.',
+                icon: 'filter_alt',
+                tag: 'Extraction',
+                stats: ['Purity: 99.8%', 'Omega-3: High']
               },
               { 
-                step: '04',
-                title: 'Cierre de Ciclo',
-                desc: 'El residuo mineral (Frass) se procesa como fertilizante premium, regenerando los suelos para futuras cosechas.',
-                icon: 'eco',
-                tag: 'Regen'
+                step: 'MOD-04',
+                title: 'Regeneración',
+                desc: 'El Frass resultante se reintegra al suelo como bio-estimulante orgánico de alta potencia.',
+                icon: 'restart_alt',
+                tag: 'Eco-Return',
+                stats: ['Regen: 100%', 'Minerals: Rich']
               }
             ].map((p, i) => (
-              <div key={i} className="bg-matte-black p-8 md:p-12 group hover:bg-zinc-900/80 transition-all duration-500 flex flex-col h-full rounded-2xl md:rounded-none border border-primary/5 md:border-0">
-                <div className="flex justify-between items-start mb-10 md:mb-12">
-                  <span className="text-3xl md:text-4xl font-black text-primary/20 group-hover:text-primary/60 transition-colors italic leading-none">{p.step}</span>
-                  <span className="text-[8px] md:text-[9px] font-black text-primary bg-primary/10 border border-primary/20 rounded-full px-3 py-1 uppercase tracking-widest">{p.tag}</span>
-                </div>
-                <div className="mb-6 md:mb-8">
-                  <span className="material-symbols-outlined text-primary text-3xl md:text-4xl mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-500">{p.icon}</span>
-                  <h3 className="text-xl md:text-2xl font-bold italic text-white uppercase tracking-tight mb-3 md:mb-4 group-hover:text-primary transition-colors">{p.title}</h3>
-                  <p className="text-gray-500 font-light leading-relaxed italic text-sm group-hover:text-gray-300 transition-colors">
-                    {p.desc}
-                  </p>
-                </div>
-                <div className="mt-auto pt-6 md:pt-8 flex items-center gap-2">
-                  <div className="h-px flex-1 bg-primary/20 group-hover:bg-primary/50 transition-colors"></div>
-                  <div className="size-2 rounded-full bg-primary/40 group-hover:bg-primary animate-pulse"></div>
+              <div key={i} className="group relative">
+                {/* Background Shadow Effect */}
+                <div className="absolute -inset-2 bg-primary/5 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                
+                <div className="relative bg-matte-black/60 backdrop-blur-sm border border-primary/10 p-8 rounded-2xl h-full flex flex-col transition-all duration-500 hover:border-primary/40 hover:-translate-y-2">
+                  {/* Technical Header */}
+                  <div className="flex justify-between items-center mb-10">
+                    <span className="font-mono text-[10px] text-primary/60 tracking-widest">{p.step}</span>
+                    <div className="flex gap-1">
+                      <div className="size-1 rounded-full bg-primary animate-pulse"></div>
+                      <div className="size-1 rounded-full bg-primary/30"></div>
+                    </div>
+                  </div>
+
+                  {/* Icon & Title */}
+                  <div className="mb-8">
+                    <div className="size-16 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-black transition-all duration-500">
+                      <span className="material-symbols-outlined text-3xl">{p.icon}</span>
+                    </div>
+                    <h3 className="text-2xl font-black italic text-white uppercase tracking-tighter mb-4 group-hover:text-primary transition-colors">{p.title}</h3>
+                    <p className="text-gray-500 font-light text-sm italic leading-relaxed group-hover:text-gray-300 transition-colors">
+                      {p.desc}
+                    </p>
+                  </div>
+
+                  {/* Telemeter Stats Block */}
+                  <div className="mt-auto pt-8 border-t border-primary/5 flex flex-col gap-3">
+                    <span className="text-[9px] font-black uppercase tracking-[0.2em] text-zinc-600 mb-1">{p.tag}</span>
+                    {p.stats.map((stat, idx) => (
+                      <div key={idx} className="flex justify-between items-center bg-white/5 rounded px-3 py-1.5">
+                        <span className="text-[10px] font-mono text-gray-400">{stat.split(':')[0]}</span>
+                        <span className="text-[10px] font-mono text-primary font-bold">{stat.split(':')[1]}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Technical Corner Accent */}
+                  <div className="absolute bottom-0 right-0 size-8 opacity-20 group-hover:opacity-100 transition-opacity">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" className="text-primary">
+                      <path d="M32 0V32H0" stroke="currentColor" strokeWidth="1"/>
+                    </svg>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="mt-16 md:mt-32 p-8 md:p-12 rounded-3xl border border-primary/20 bg-gradient-to-r from-primary/5 to-transparent flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
-            <div className="space-y-4 text-center md:text-left">
-              <h4 className="text-xl md:text-2xl font-black italic uppercase text-white">Impacto Neto Positivo</h4>
-              <p className="text-gray-400 font-light max-w-xl italic text-sm md:text-base">
-                Nuestra ingeniería no solo busca reducir el daño; busca activamente restaurar los ecosistemas mediante la devolución de nutrientes a la tierra.
-              </p>
+          {/* Efficiency Summary Banner */}
+          <div className="mt-16 md:mt-24 bg-primary/5 border border-primary/20 rounded-3xl p-8 md:p-12 flex flex-col lg:flex-row items-center justify-between gap-12 overflow-hidden relative group">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/10 transition-colors"></div>
+            
+            <div className="flex flex-col md:flex-row items-center gap-8 text-center md:text-left relative z-10">
+              <div className="size-24 rounded-full bg-matte-black border border-primary/30 flex items-center justify-center shrink-0">
+                <span className="material-symbols-outlined text-primary text-4xl">eco</span>
+              </div>
+              <div className="space-y-2">
+                <h4 className="text-2xl font-black italic uppercase text-white">Impacto Neto Positivo</h4>
+                <p className="text-gray-400 font-light italic max-w-lg leading-relaxed">
+                  Nuestros laboratorios operan bajo el protocolo <span className="text-primary">Beetle-Regen</span>, devolviendo más nutrientes a la tierra de los que extraemos.
+                </p>
+              </div>
             </div>
-            <div className="grid grid-cols-2 gap-8 md:gap-12 shrink-0">
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 md:gap-16 relative z-10">
               <div className="text-center">
-                <p className="text-3xl md:text-4xl font-black text-primary italic">98%</p>
-                <p className="text-[9px] md:text-[10px] uppercase tracking-widest text-zinc-500 font-black">Residuo Reutilizado</p>
+                <p className="text-4xl md:text-5xl font-black text-primary italic leading-none mb-2">98.2%</p>
+                <p className="text-[9px] uppercase tracking-widest text-zinc-500 font-black">Ciclo Cerrado</p>
               </div>
               <div className="text-center">
-                <p className="text-3xl md:text-4xl font-black text-primary italic">0.0</p>
-                <p className="text-[9px] md:text-[10px] uppercase tracking-widest text-zinc-500 font-black">Huella Hídrica Neta</p>
+                <p className="text-4xl md:text-5xl font-black text-primary italic leading-none mb-2">0.0</p>
+                <p className="text-[9px] uppercase tracking-widest text-zinc-500 font-black">Water Waste</p>
+              </div>
+              <div className="text-center hidden sm:block">
+                <p className="text-4xl md:text-5xl font-black text-primary italic leading-none mb-2">GOLD</p>
+                <p className="text-[9px] uppercase tracking-widest text-zinc-500 font-black">Bio-Audit</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* The Beetle Protocol - Detailed Traceability */}
+      {/* Traceability Protocol Section */}
       <section className="py-20 md:py-32 bg-matte-black relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #c6a65d 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
-        </div>
-
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
             <div className="w-full lg:w-1/2">
-              <div className="relative aspect-video lg:aspect-square rounded-3xl overflow-hidden border border-white/10 shadow-3xl">
+              <div className="relative aspect-video lg:aspect-square rounded-3xl overflow-hidden border border-white/10 shadow-3xl group">
                 <img 
                   src="https://images.unsplash.com/photo-1610632380989-680fe40816c6?auto=format&fit=crop&q=80&w=1200" 
                   alt="Packaging and Logistics" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                 <div className="absolute inset-0 bg-primary/20 mix-blend-overlay"></div>
+                <div className="absolute bottom-10 left-10 p-6 bg-matte-black/80 backdrop-blur-md border border-primary/20 rounded-2xl hidden md:block max-w-[280px]">
+                   <p className="text-primary font-black uppercase text-[10px] tracking-widest mb-2 italic">Certificado 2024</p>
+                   <p className="text-white text-sm font-light italic">Trazabilidad completa mediante tecnología Blockchain para cada lote producido.</p>
+                </div>
               </div>
             </div>
             
-            <div className="w-full lg:w-1/2 space-y-6 md:space-y-8">
-              <span className="text-primary font-black tracking-[0.4em] uppercase text-[10px] md:text-xs italic">El Protocolo Beetle</span>
-              <h2 className="text-3xl md:text-6xl font-black italic uppercase tracking-tighter text-white leading-none">Trazabilidad de <span className="text-primary">Élite</span>.</h2>
-              <p className="text-gray-400 text-base md:text-lg font-light leading-relaxed italic">
-                Desde la primera larva hasta el empaque final, cada paso es monitoreado por IA para asegurar la máxima pureza proteica y el mínimo impacto ambiental.
+            <div className="w-full lg:w-1/2 space-y-6 md:space-y-10">
+              <div className="space-y-4">
+                <span className="text-primary font-black tracking-[0.4em] uppercase text-[10px] md:text-xs italic">El Protocolo Beetle</span>
+                <h2 className="text-4xl md:text-7xl font-black italic uppercase tracking-tighter text-white leading-[0.85]">Transparencia <br /> <span className="text-primary">de Élite.</span></h2>
+              </div>
+              <p className="text-gray-400 text-lg md:text-xl font-light leading-relaxed italic">
+                No ocultamos nada. Nuestra cadena de suministro es un libro abierto. Desde la primera larva hasta el empaque compostable, el control es absoluto.
               </p>
               
-              <ul className="space-y-4 md:space-y-6">
+              <div className="grid sm:grid-cols-2 gap-6">
                 {[
-                  'Bio-empaque 100% compostable derivado de hongos.',
-                  'Logística neutra en carbono con vehículos eléctricos.',
-                  'Certificación Triple Impacto (Económico, Social y Ambiental).',
-                  'Soporte a comunidades locales en la cadena de suministros.'
+                  { icon: 'package_2', text: 'Bio-empaque derivado de hongos.' },
+                  { icon: 'electric_bolt', text: 'Logística 100% eléctrica.' },
+                  { icon: 'public', text: 'Impacto Social Certificado.' },
+                  { icon: 'groups', text: 'Comunidades locales activas.' }
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-4 text-white font-medium italic group cursor-default">
-                    <span className="size-6 rounded-full border border-primary/30 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all duration-300 mt-0.5 shrink-0">
-                      <span className="material-symbols-outlined text-xs text-primary group-hover:text-black transition-colors">check</span>
-                    </span>
-                    <span className="group-hover:text-primary transition-colors text-sm md:text-base leading-snug">{item}</span>
-                  </li>
+                  <div key={i} className="flex items-center gap-4 group cursor-default p-4 rounded-xl border border-white/5 hover:border-primary/20 transition-colors bg-white/[0.02]">
+                    <span className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">{item.icon}</span>
+                    <span className="text-white text-sm font-medium italic group-hover:text-primary transition-colors">{item.text}</span>
+                  </div>
                 ))}
-              </ul>
+              </div>
 
-              <div className="pt-4 md:pt-8">
-                <button className="w-full sm:w-auto gold-gradient text-black px-12 py-5 rounded-lg text-sm font-black uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-3">
+              <div className="pt-6">
+                <button className="w-full sm:w-auto gold-gradient text-black px-12 py-5 rounded-lg text-sm font-black uppercase tracking-widest hover:brightness-110 hover:shadow-[0_0_30px_rgba(198,166,93,0.3)] active:scale-95 transition-all flex items-center justify-center gap-3">
                   Unirse a la Revolución
                   <span className="material-symbols-outlined">trending_flat</span>
                 </button>
@@ -260,15 +321,18 @@ const Impacto: React.FC = () => {
       </section>
 
       {/* Quote Section */}
-      <section className="py-24 md:py-40 bg-background-dark text-center">
-        <div className="max-w-4xl mx-auto px-6">
-          <span className="material-symbols-outlined text-primary text-4xl md:text-6xl opacity-20 mb-8 md:mb-12">format_quote</span>
+      <section className="py-24 md:py-40 bg-background-dark text-center relative">
+        <div className="absolute inset-0 opacity-5 flex items-center justify-center overflow-hidden pointer-events-none">
+          <span className="text-[40vw] font-black italic select-none">REGEN</span>
+        </div>
+        <div className="max-w-4xl mx-auto px-6 relative z-10">
+          <span className="material-symbols-outlined text-primary text-4xl md:text-7xl opacity-30 mb-8 md:mb-12">engineering</span>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-black italic uppercase tracking-tighter text-white leading-tight mb-8 md:mb-12">
             "No estamos tratando de salvar el mundo con una barra de proteína. Estamos demostrando que <span className="text-primary">el mundo se salva</span> cuando la tecnología y la naturaleza trabajan juntas."
           </h2>
           <div className="flex flex-col items-center gap-2">
-            <p className="text-primary font-black uppercase tracking-widest text-xs md:text-sm">Equipo de Ingeniería</p>
-            <p className="text-gray-500 text-[9px] md:text-[10px] uppercase tracking-[0.2em]">Beetle Protein Elite Labs</p>
+            <p className="text-primary font-black uppercase tracking-widest text-xs md:text-sm">Beetle Research Division</p>
+            <p className="text-gray-500 text-[9px] md:text-[10px] uppercase tracking-[0.3em]">Elite Performance & Ecology Labs</p>
           </div>
         </div>
       </section>
