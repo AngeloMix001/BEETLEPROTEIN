@@ -61,9 +61,9 @@ const Home: React.FC = () => {
               </p>
             </div>
             <div className="flex flex-wrap justify-center md:justify-start items-center gap-6 animate-reveal-3">
-              <button className="gold-gradient text-background-dark px-10 py-4 rounded-lg text-sm font-black tracking-widest uppercase hover:brightness-110 transition-all transform hover:scale-105">
+              <Link to="/sabores" className="gold-gradient text-background-dark px-10 py-4 rounded-lg text-sm font-black tracking-widest uppercase hover:brightness-110 transition-all transform hover:scale-105 text-center">
                 Explorar Colección
-              </button>
+              </Link>
               <Link to="/sabores" className="border border-primary/30 text-white px-10 py-4 rounded-lg text-sm font-black tracking-widest uppercase hover:bg-primary/10 transition-all">
                 Ver Sabores
               </Link>

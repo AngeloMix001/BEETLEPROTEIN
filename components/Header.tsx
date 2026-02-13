@@ -38,9 +38,9 @@ const Header: React.FC<HeaderProps> = ({ cartCount }) => {
               </span>
             )}
           </Link>
-          <button className="hidden sm:block gold-gradient text-background-dark px-8 py-2.5 rounded text-xs font-bold tracking-widest uppercase hover:brightness-110 transition-all">
+          <Link to="/sabores" className="hidden sm:block gold-gradient text-background-dark px-8 py-2.5 rounded text-xs font-bold tracking-widest uppercase hover:brightness-110 transition-all text-center">
             Comprar
-          </button>
+          </Link>
         </div>
       </div>
     </header>

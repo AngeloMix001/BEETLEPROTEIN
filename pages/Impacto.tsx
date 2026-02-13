@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Impacto: React.FC = () => {
   return (
@@ -310,10 +311,10 @@ const Impacto: React.FC = () => {
               </div>
 
               <div className="pt-6">
-                <button className="w-full sm:w-auto gold-gradient text-black px-12 py-5 rounded-lg text-sm font-black uppercase tracking-widest hover:brightness-110 hover:shadow-[0_0_30px_rgba(198,166,93,0.3)] active:scale-95 transition-all flex items-center justify-center gap-3">
+                <Link to="/sabores" className="w-full sm:w-auto gold-gradient text-black px-12 py-5 rounded-lg text-sm font-black uppercase tracking-widest hover:brightness-110 hover:shadow-[0_0_30px_rgba(198,166,93,0.3)] active:scale-95 transition-all flex items-center justify-center gap-3">
                   Unirse a la Revolución
                   <span className="material-symbols-outlined">trending_flat</span>
-                </button>
+                </Link>
               </div>
             </div>
           </div>
