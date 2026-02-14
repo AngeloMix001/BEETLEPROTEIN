@@ -9,6 +9,8 @@ import Cart from './pages/Cart';
 import Sabores from './pages/Sabores';
 import Beneficios from './pages/Beneficios';
 import Impacto from './pages/Impacto';
+import Historia from './pages/Historia';
+import Ciencia from './pages/Ciencia';
 import { Product, CartItem } from './types';
 
 const App: React.FC = () => {
@@ -61,6 +63,8 @@ const App: React.FC = () => {
             <Route path="/sabores" element={<Sabores />} />
             <Route path="/beneficios" element={<Beneficios />} />
             <Route path="/impacto" element={<Impacto />} />
+            <Route path="/historia" element={<Historia />} />
+            <Route path="/ciencia" element={<Ciencia />} />
           </Routes>
         </main>
 

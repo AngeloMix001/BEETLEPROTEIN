@@ -6,7 +6,7 @@ export const PRODUCTS: Product[] = [
     id: 'mani-chocolate',
     name: 'Mani Chocolate',
     tagline: 'Premium Protein Bar',
-    price: 4.50,
+    price: 1500,
     description: 'Intensidad de cacao oscuro con el balance perfecto de maní tostado y un toque de sal marina. 20g de proteína de alta biodisponibilidad para un rendimiento excepcional.',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAsKZ977Lg2-5CEK8aT4ZJJjMVmRmkngg_92fq0iNhonWc7HCi8BO0TyU4Ib8u_OU1EzZmj68l4p_ZztuOnKpSwOSimvcZ7C89L3OQ15zg_oI70_lePsB9o0r8Ds58qrFrPedk3WGJciRXPVU86CfB1opqk1loVLfr61hI7HE6MaQE1C7cAWRsMhs5DEp-7rG6rf4i02VQv_4ZoZvA2x4LUkcjP9FF1WVn6oE01yh55155q6AItt1imCh2t7tNulCY3IR3yGuO3LA',
     flavorProfile: 'Cacao Profundo',
