@@ -10,6 +10,10 @@ interface WishlistProps {
 }
 
 const Wishlist: React.FC<WishlistProps> = ({ items, onRemove, onAddToCart }) => {
+  const formatPrice = (price: number) => {
+    return price.toLocaleString('es-ES');
+  };
+
   return (
     <main className="mx-auto w-full max-w-7xl flex-1 px-6 py-32 md:px-16 min-h-screen">
       <div className="flex flex-col gap-4 mb-12">
@@ -45,7 +49,7 @@ const Wishlist: React.FC<WishlistProps> = ({ items, onRemove, onAddToCart }) => 
                   <h3 className="text-xl font-bold text-primary hover:underline italic">{item.name}</h3>
                 </Link>
                 <p className="text-xs text-white/50 uppercase tracking-widest font-bold">{item.flavorProfile}</p>
-                <p className="text-lg font-bold text-white">${item.price.toFixed(2)}</p>
+                <p className="text-lg font-bold text-white">${formatPrice(item.price)}</p>
               </div>
 
               <button 

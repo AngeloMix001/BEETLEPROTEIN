@@ -23,7 +23,7 @@ export const PRODUCTS: Product[] = [
     id: 'berries',
     name: 'Berries',
     tagline: 'Premium Protein Bar',
-    price: 4.50,
+    price: 1500,
     description: 'Explosión natural de frutos rojos silvestres con proteína de alto rendimiento y frescura cítrica.',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAcVkkph8ew1F7moqSZvpNj6DtjzWMGofki83EMxHJZof6aTjCMt62rIFH96DjHpQnnsYzYRoYTqM2ImDNktCSQkajfmhowU4PRKxwS8S0HIS5P81xDRypTTV5nTdHX1sUCsYGaCnKeLyd1D4KrT3W6cGOfkQKLJrC_RLQPAKKwyNG0l-sjW3efHgCh3h9CZRzXxZcrCqbCKmpy9YvYCNkvUgJmqY774ndML9cKxO9QLA0Yk56EcfKEMZI4JD1s4TF6u4r2LYf8Dg',
     flavorProfile: 'Frambuesa Oscura',

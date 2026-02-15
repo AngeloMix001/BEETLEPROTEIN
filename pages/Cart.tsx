@@ -11,8 +11,12 @@ interface CartProps {
 
 const Cart: React.FC<CartProps> = ({ items, onRemove, onUpdateQuantity }) => {
   const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const shipping = items.length > 0 ? 5.00 : 0;
+  const shipping = items.length > 0 ? 5 : 0;
   const total = subtotal + shipping;
+
+  const formatPrice = (price: number) => {
+    return price.toLocaleString('es-ES');
+  };
 
   return (
     <main className="mx-auto w-full max-w-7xl flex-1 px-6 py-32 md:px-16 min-h-screen">
@@ -67,7 +71,7 @@ const Cart: React.FC<CartProps> = ({ items, onRemove, onUpdateQuantity }) => {
                       <span className="material-symbols-outlined text-lg">add</span>
                     </button>
                   </div>
-                  <p className="text-2xl font-black text-primary tracking-tighter italic">${(item.price * item.quantity).toFixed(2)}</p>
+                  <p className="text-2xl font-black text-primary tracking-tighter italic">${formatPrice(item.price * item.quantity)}</p>
                 </div>
               </div>
             ))}
@@ -78,16 +82,16 @@ const Cart: React.FC<CartProps> = ({ items, onRemove, onUpdateQuantity }) => {
               <div className="space-y-4 mb-8">
                 <div className="flex justify-between text-xs font-bold uppercase tracking-widest">
                   <span className="text-white/40">Subtotal</span>
-                  <span className="text-white">${subtotal.toFixed(2)}</span>
+                  <span className="text-white">${formatPrice(subtotal)}</span>
                 </div>
                 <div className="flex justify-between text-xs font-bold uppercase tracking-widest">
                   <span className="text-white/40">Envío Express</span>
-                  <span className="text-white">${shipping.toFixed(2)}</span>
+                  <span className="text-white">${formatPrice(shipping)}</span>
                 </div>
                 <div className="pt-4 border-t border-primary/10">
                   <div className="flex justify-between items-end">
                     <span className="text-lg font-black text-white uppercase italic">Total</span>
-                    <span className="text-4xl font-black text-primary tracking-tighter italic">${total.toFixed(2)}</span>
+                    <span className="text-4xl font-black text-primary tracking-tighter italic">${formatPrice(total)}</span>
                   </div>
                 </div>
               </div>

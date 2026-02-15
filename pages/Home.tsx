@@ -26,6 +26,10 @@ const Home: React.FC = () => {
     });
   }, [selectedFlavor]);
 
+  const formatPrice = (price: number) => {
+    return price.toLocaleString('es-ES');
+  };
+
   // Cálculos dinámicos para el efecto de la Hero Section
   const heroOpacity = Math.max(0, 1 - scrollY / 700);
   const heroTextTransform = `translateY(${scrollY * 0.35}px)`;
@@ -57,6 +61,10 @@ const Home: React.FC = () => {
           0%, 100% { opacity: 0.3; transform: scale(1); }
           50% { opacity: 0.6; transform: scale(1.05); }
         }
+        @keyframes blink-fast {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.3; }
+        }
         .animate-reveal-1 { animation: revealUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         .animate-reveal-2 { opacity: 0; animation: revealUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards; }
         .animate-reveal-3 { opacity: 0; animation: revealUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards; }
@@ -66,6 +74,11 @@ const Home: React.FC = () => {
           background: linear-gradient(90deg, transparent, #c6a65d, transparent);
           position: absolute;
           animation: scanline 3s linear infinite;
+        }
+        .hud-grid {
+          background-image: linear-gradient(rgba(198, 166, 93, 0.1) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(198, 166, 93, 0.1) 1px, transparent 1px);
+          background-size: 10px 10px;
         }
       `}</style>
 
@@ -117,21 +130,87 @@ const Home: React.FC = () => {
               <div className="relative z-20 w-4/5 aspect-square bg-center bg-no-repeat bg-contain drop-shadow-[0_45px_45px_rgba(198,166,93,0.25)]" style={{ backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuBWSgjeTHp9_unAbeyd6sER0WS3v9UgTiVmzFVgHfxGgX3tZFm3_1_PwqHpfpUCyEkDag4Y4O9BR2RNgV9fvb_gSzjwkoGo3k32JtMb2yyZxhasScUvW_2nNaX3DKGM6-G0ZaF5jyw11kibwOLifWfYAl3VEWnZFl_8gKhDFfr-7B25Jiv8Ip4t1iX2jhKOMkVpQ-dHpu7qppDuwNcozE_sBY4ASiPfF01UUzzVwQGi75RqMEGw1sAQ6B-90iBzRdI8xwcDF4LXmQ')`, transform: heroImageTransform }}>
                 <div className="scan-line"></div>
               </div>
+
+              {/* Data Floating Points */}
               <div className="absolute inset-0 pointer-events-none" style={{ transform: `translateY(${scrollY * -0.05}px)` }}>
-                {[
-                  { pos: 'top-20 left-10', label: 'PROTEÍNA CONCENTRADA', val: '20g' },
-                  { pos: 'bottom-40 right-10', label: 'BIO-AVAIL', val: '99.8%' },
-                  { pos: 'top-1/2 -right-4', label: 'TENEBRIO', val: 'MOLITOR' }
-                ].map((point, i) => (
-                  <div key={i} className={`absolute ${point.pos} flex flex-col items-start gap-2 animate-reveal-${i+1}`}>
-                    <div className="h-px w-12 bg-primary/40"></div>
-                    <div className="p-3 bg-matte-black/60 backdrop-blur-xl border border-primary/20 rounded-lg">
-                      <p className="text-[8px] font-black text-primary tracking-widest uppercase">{point.label}</p>
-                      <p className="text-sm font-black text-white italic">{point.val}</p>
+                {/* Punto 1: Proteína */}
+                <div className="absolute top-20 left-10 flex flex-col items-start gap-2 animate-reveal-1">
+                  <div className="h-px w-12 bg-primary/40"></div>
+                  <div className="p-3 bg-matte-black/60 backdrop-blur-xl border border-primary/20 rounded-lg">
+                    <p className="text-[8px] font-black text-primary tracking-widest uppercase">PROTEÍNA CONCENTRADA</p>
+                    <p className="text-sm font-black text-white italic">20g</p>
+                  </div>
+                </div>
+
+                {/* Punto 2: Bio-Avail */}
+                <div className="absolute bottom-40 right-10 flex flex-col items-start gap-2 animate-reveal-2">
+                  <div className="h-px w-12 bg-primary/40"></div>
+                  <div className="p-3 bg-matte-black/60 backdrop-blur-xl border border-primary/20 rounded-lg">
+                    <p className="text-[8px] font-black text-primary tracking-widest uppercase">BIO-AVAIL</p>
+                    <p className="text-sm font-black text-white italic">99.8%</p>
+                  </div>
+                </div>
+
+                {/* PUNTO MEJORADO: TENEBRIO MOLITOR (WIDGET HUD) */}
+                <div className="absolute top-1/2 -right-12 -translate-y-1/2 flex flex-col items-start gap-0 animate-reveal-3">
+                  {/* Conector HUD */}
+                  <div className="flex items-center">
+                    <div className="w-16 h-px bg-gradient-to-r from-transparent to-primary/60"></div>
+                    <div className="size-2 rounded-full border border-primary/60 flex items-center justify-center">
+                      <div className="size-0.5 bg-primary animate-pulse"></div>
                     </div>
                   </div>
-                ))}
+                  
+                  {/* Main Widget */}
+                  <div className="mt-2 w-64 bg-matte-black/80 backdrop-blur-2xl border-l-2 border-primary overflow-hidden rounded-r-xl shadow-[20px_0_50px_rgba(198,166,93,0.1)] group/tm">
+                    <div className="p-4 space-y-3">
+                      {/* Header Widget */}
+                      <div className="flex justify-between items-start">
+                        <div className="space-y-0.5">
+                          <p className="text-[7px] font-mono text-primary/60 tracking-[0.3em] uppercase">Muestreo Bio-Orgánico</p>
+                          <h4 className="text-lg font-black text-white italic tracking-tighter leading-none">TENEBRIO <span className="text-primary">MOLITOR</span></h4>
+                        </div>
+                        <span className="material-symbols-outlined text-primary text-xl animate-spin-slow" style={{ animationDuration: '6s' }}>biotech</span>
+                      </div>
+
+                      {/* Info Area con HUD Grid */}
+                      <div className="relative h-16 rounded-lg hud-grid border border-primary/10 flex items-center justify-center overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div className="scan-line !opacity-20"></div>
+                        
+                        <div className="relative z-10 flex gap-4 text-center">
+                          <div className="space-y-1">
+                            <p className="text-[8px] font-black text-zinc-500 uppercase">Estado</p>
+                            <p className="text-[10px] font-black text-green-500 uppercase flex items-center gap-1">
+                              <span className="size-1 bg-green-500 rounded-full animate-blink-fast"></span>
+                              OPTIMIZADO
+                            </p>
+                          </div>
+                          <div className="w-px h-6 bg-primary/20 self-center"></div>
+                          <div className="space-y-1">
+                            <p className="text-[8px] font-black text-zinc-500 uppercase">Pureza</p>
+                            <p className="text-[10px] font-black text-white italic tracking-tighter">LVL: MAX</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Metadata Footer */}
+                      <div className="flex justify-between items-center pt-1">
+                        <p className="text-[8px] font-mono text-zinc-600">SEQ_ID: TM-BTL-088</p>
+                        <div className="flex gap-0.5">
+                          {[1,2,3,4].map(b => <div key={b} className="w-2 h-0.5 bg-primary/30"></div>)}
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Barra de Progreso HUD */}
+                    <div className="h-1 w-full bg-white/5 relative overflow-hidden">
+                      <div className="absolute inset-y-0 left-0 bg-primary/60 w-3/4 animate-pulse"></div>
+                    </div>
+                  </div>
+                </div>
               </div>
+
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[600px] border border-primary/5 rounded-full animate-pulse-soft"></div>
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[450px] border border-primary/10 rounded-full animate-pulse-soft" style={{ animationDelay: '1s' }}></div>
             </div>
@@ -174,7 +253,7 @@ const Home: React.FC = () => {
                 <div className="flex-1 flex flex-col justify-center relative z-10">
                   <div className="flex justify-between items-start mb-4">
                     <h3 className="text-3xl font-black text-white italic uppercase tracking-tighter leading-none">{product.name}</h3>
-                    <span className="text-primary font-black text-xl italic tracking-tighter">${product.price.toFixed(2)}</span>
+                    <span className="text-primary font-black text-xl italic tracking-tighter">${formatPrice(product.price)}</span>
                   </div>
                   <p className="text-gray-500 font-light leading-relaxed mb-8 italic">{product.description}</p>
                   <div className="flex items-center justify-between">

@@ -44,6 +44,10 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => {
     }, 800);
   };
 
+  const formatPrice = (price: number) => {
+    return price.toLocaleString('es-ES');
+  };
+
   if (!product) return null;
 
   return (
@@ -95,8 +99,8 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ onAddToCart }) => {
             <div className="space-y-4 text-center lg:text-left">
               <span className="text-primary font-black tracking-[0.4em] uppercase text-xs italic">{product.tagline}</span>
               <h1 className="text-6xl lg:text-8xl font-black tracking-tighter italic uppercase leading-[0.9]">{product.name}</h1>
-              <p className="text-3xl font-black text-primary/90 italic tracking-tighter" aria-label={`Precio: ${product.price.toFixed(2)} dólares`}>
-                ${product.price.toFixed(2)}
+              <p className="text-3xl font-black text-primary/90 italic tracking-tighter" aria-label={`Precio: ${formatPrice(product.price)}`}>
+                ${formatPrice(product.price)}
               </p>
               <p className="text-lg text-zinc-400 leading-relaxed max-w-xl font-light italic">
                 {product.description}
